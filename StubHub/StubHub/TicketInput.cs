@@ -8,6 +8,7 @@ namespace StubHub
 {
     class TicketInput
     {
+        public string ticketNumber;
         public string eventCategory;
         public string eventDescription;
         public string eventDateTime;
@@ -15,6 +16,12 @@ namespace StubHub
         public string seatPrice;
         public string seatLocation;
 
+        public string getTicketNumber()
+        {
+            Console.WriteLine("provide the five digit ticket number.");
+            ticketNumber = Console.ReadLine();
+            return ticketNumber;
+        }
         public string getTickCategory()
         {
             Console.WriteLine("game or concert?");
@@ -37,21 +44,21 @@ namespace StubHub
 
         public string getEventDiscription()
         {
-            Console.WriteLine("provide the team(s) or artist");
+            Console.WriteLine("provide the team(s) or artist(s).");
             eventDescription = Console.ReadLine();
             return eventDescription;
         }
 
         public string getEventDateTime()
         {
-            Console.WriteLine("when is the event taking place? (ex. fri:jan1:7:00pm)");
+            Console.WriteLine("when is the event taking place? (ex. fri/jan1/7:00pm)");
             eventDateTime = Console.ReadLine();
             return eventDateTime;
         }
 
         public string getEventLocation()
         {
-            Console.WriteLine("where is the event? (ex. venue:city");
+            Console.WriteLine("where is the event? (ex. venue/city/state");
             eventLocation = Console.ReadLine();
             return eventLocation;
         }
@@ -65,14 +72,14 @@ namespace StubHub
 
         public string locationOfSeat()
         {
-            Console.WriteLine("where is the seat located? (ex. section100:row10:seat1)");
+            Console.WriteLine("where is the seat located? (ex. section100/row10/seat1)");
             seatLocation = Console.ReadLine();
             return seatLocation;
         }
 
         public void createTicket()
         {
-            Ticket newticket = new Ticket(eventCategory, eventDescription, eventDateTime, eventLocation, seatPrice, seatLocation);
+            Ticket newticket = new Ticket(ticketNumber, eventCategory, eventDescription, eventDateTime, eventLocation, seatPrice, seatLocation);
         }
     }
 }

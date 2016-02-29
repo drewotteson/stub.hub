@@ -12,11 +12,8 @@ namespace StubHub
         public string userLastName;
         public string desiredUserName;
         public string desiredPassword;
-
         public string existingUsername;
         public string existingPassword;
-
-
 
         public string getFirstName()
         {
@@ -60,8 +57,6 @@ namespace StubHub
             return existingPassword;
 
         }
-
-        
 
         public void createUser()
         {

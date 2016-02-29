@@ -14,9 +14,7 @@ namespace StubHub
         UserInput userInput = new UserInput();
         FileWrite fw = new FileWrite();
         List<string> userDetails = new List<string>();
-        //List<List<string>> tickList;
-        
-        
+  
         public string signInChoice;
 
         public void signInOption()
@@ -33,6 +31,7 @@ namespace StubHub
                     {
                         if (line.Contains(passwordInput))
                         {
+                            Console.Clear();
                             Console.WriteLine("Welcome: "+ userNameInput);
                             userChooseTask();
                             break;
@@ -45,6 +44,7 @@ namespace StubHub
                     }
                 }
             }
+
             else if (signInChoice == "sign up")
             {
                 string firstName = userInput.getFirstName();
@@ -63,6 +63,8 @@ namespace StubHub
                 user.PassWord = userPassword;
                 userDetails.Add(userPassword);
 
+                Console.Clear();
+                Console.WriteLine("account successfully created");
                 PopulateUserList();
             }
             else
@@ -91,14 +93,14 @@ namespace StubHub
                 {                  
                     _user += detail + ",";                  
                 }
-                File.AppendAllText(user.userTextFile, _user + Environment.NewLine);
+                File.AppendAllText(user.userTextFile, _user);
                 userChooseTask();
             }
         }
 
         public void userChooseTask()
         {
-            Console.WriteLine("choose: post ticket to sell(post), buy ticket(buy), search tickets(search)");
+            Console.WriteLine("choose: post ticket to sell(post), buy ticket(buy), search by category(search), display my tickets(display), leave the site(leave)");
             string input = Console.ReadLine();
 
             switch (input)
@@ -107,10 +109,15 @@ namespace StubHub
                     ticket.createAndPostTicket();
                     break;
                 case "buy":
-                    ticket.buyTicket();
+                    ticket.chooseTicketToBuy();
                     break;
                 case "search":
-                    ticket.searchTicketCategory();
+                    ticket.searchAllTicketCategories();
+                    break;
+                case "display":
+                    ticket.displayUserTickets();
+                    break;
+                case "leave":
                     break;
                 default:
                     break;
